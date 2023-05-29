@@ -69,6 +69,10 @@ def _get_external_deps(external_deps):
             ret.append("//third_party/objective_c/Cronet:cronet_c_for_grpc")
         elif dep.startswith("absl/"):
             ret.append("@com_google_absl//" + dep)
+        elif dep == "libssl":
+            ret.append("@boringssl//:ssl")
+        elif dep == "libcrypto":
+            ret.append("@boringssl//:crypto")
         else:
             ret.append("//external:" + dep)
     return ret
